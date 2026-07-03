@@ -791,10 +791,10 @@ section {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(105deg,
-    rgba(10, 30, 54, 0.97) 0%,
-    rgba(10, 30, 54, 0.82) 55%,
-    rgba(0, 82, 255, 0.12) 100%
+  background: linear-gradient(90deg,
+    rgba(10, 30, 54, 0.92) 0%,
+    rgba(10, 30, 54, 0.3) 60%,
+    rgba(204, 255, 0, 0.08) 100%
   );
   z-index: 1;
 }
@@ -948,6 +948,7 @@ body.dark-mode .testimonial-quote {
   position: absolute;
   inset: 0;
   z-index: 1;
+  background: linear-gradient(90deg, rgba(10, 30, 54, 0.92) 0%, rgba(10, 30, 54, 0.3) 60%, rgba(204, 255, 0, 0.08) 100%);
 }
 
 .page-hero-content {
@@ -960,9 +961,6 @@ body.dark-mode .testimonial-quote {
 .about-hero {
   background-color: var(--primary);
 }
-.about-hero .page-hero-overlay {
-  background: linear-gradient(180deg, rgba(10, 30, 54, 0.9) 0%, rgba(10, 30, 54, 0.7) 100%);
-}
 .about-hero .page-hero-content {
   padding: 80px 0 60px;
 }
@@ -970,9 +968,6 @@ body.dark-mode .testimonial-quote {
 /* ── Services Hero ── */
 .services-hero {
   background-color: var(--primary);
-}
-.services-hero .page-hero-overlay {
-  background: linear-gradient(180deg, rgba(10, 30, 54, 0.88) 0%, rgba(0, 82, 255, 0.6) 100%);
 }
 .services-hero .page-hero-content {
   padding: 80px 0 60px;
@@ -982,9 +977,6 @@ body.dark-mode .testimonial-quote {
 .gallery-hero {
   background-color: var(--primary);
 }
-.gallery-hero .page-hero-overlay {
-  background: linear-gradient(90deg, rgba(10, 30, 54, 0.92) 0%, rgba(10, 30, 54, 0.3) 60%, rgba(204, 255, 0, 0.08) 100%);
-}
 .gallery-hero .page-hero-content {
   padding: 70px 0 50px;
 }
@@ -992,9 +984,6 @@ body.dark-mode .testimonial-quote {
 /* ── Contact Hero ── */
 .contact-hero {
   background-color: var(--primary);
-}
-.contact-hero .page-hero-overlay {
-  background: radial-gradient(ellipse at 50% 80%, rgba(0, 82, 255, 0.4) 0%, rgba(10, 30, 54, 0.92) 65%);
 }
 .contact-hero .page-hero-content {
   padding: 70px 0 50px;
@@ -1035,9 +1024,6 @@ body.dark-mode .testimonial-quote {
     min-height: 520px;
     background-image: none !important;
     background-color: var(--primary) !important;
-  }
-  .page-hero-overlay {
-    background: linear-gradient(90deg, rgba(var(--primary-rgb), 0.96) 0%, rgba(var(--primary-rgb), 0.8) 50%, rgba(var(--electric-blue-rgb), 0.15) 100%) !important;
   }
   
   /* Center align the left-side text contents in page-hero sections */

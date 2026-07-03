@@ -181,12 +181,40 @@
       border-color: rgba(10, 30, 54, 0.15) !important;
       color: var(--text-main) !important;
     }
+
+    /* Small screens customization */
+    @media (max-width: 360px) {
+      .auth-card .form-check-label {
+        font-size: 11px !important;
+      }
+      .auth-card .form-check-input {
+        width: 12px !important;
+        height: 12px !important;
+      }
+      .auth-card .terms-link {
+        font-size: 11px !important;
+      }
+      .auth-toggles {
+        top: 15px !important;
+        right: 15px !important;
+        left: auto !important;
+        transform: none !important;
+        margin: 0 !important;
+      }
+      body {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        padding-top: 60px !important;
+        padding-bottom: 24px !important;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Theme & RTL Toggles (top right corner, outside of the auth card) -->
-  <div class="position-absolute top-0 end-0 m-4 d-flex gap-2" style="z-index: 1000;">
+  <div class="auth-toggles position-absolute top-0 end-0 m-4 d-flex gap-2" style="z-index: 1000;">
     <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle Text Direction" aria-label="Toggle RTL direction">RTL</button>
     <button class="utility-btn" id="theme-toggle" title="Toggle Light/Dark Mode" aria-label="Toggle dark mode">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
