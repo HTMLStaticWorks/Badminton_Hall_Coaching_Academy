@@ -7,21 +7,21 @@
 
 :root {
   /* Brand Colors */
-  --primary: #0A1E36;          /* Deep Navy Base */
-  --primary-rgb: 10, 30, 54;
-  --accent: #CCFF00;           /* Neon Lime */
-  --accent-rgb: 204, 255, 0;
-  --electric-blue: #0052FF;    /* Vibrant Electric Accent */
-  --electric-blue-rgb: 0, 82, 255;
+  --primary: #0B3025;          /* Midnight Court Forest Green */
+  --primary-rgb: 11, 48, 37;
+  --accent: #D95200;           /* Vibrant Sports Court Orange */
+  --accent-rgb: 217, 82, 0;
+  --electric-blue: #0284C7;    /* Premium Sky Blue */
+  --electric-blue-rgb: 2, 132, 199;
   
   /* Theme Colors (Light Theme Default) */
-  --bg-main: #F8FAFC;
-  --bg-card: rgba(255, 255, 255, 0.9);
-  --bg-navbar: rgba(255, 255, 255, 0.92);
-  --border-color: rgba(10, 30, 54, 0.1);
-  --text-main: #0F172A;
-  --text-muted: #475569;       /* Improved contrast from #64748B */
-  --text-light: #F8FAFC;
+  --bg-main: #F4F7F5;          /* Premium Pale Sage-Gray */
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-navbar: rgba(244, 247, 245, 0.92);
+  --border-color: rgba(11, 48, 37, 0.12);
+  --text-main: #0A1C16;        /* Very dark forest green for high contrast */
+  --text-muted: #425A52;       /* Muted dark slate green for high contrast */
+  --text-light: #F4F7F5;
   
   /* Font Family */
   --font-sans: 'Outfit', sans-serif;
@@ -32,11 +32,11 @@
   --transition-fast: all 0.25s ease;
   
   /* Shadows & Glassmorphism */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 82, 255, 0.06);
+  --shadow-sm: 0 2px 8px rgba(11, 48, 37, 0.05);
+  --shadow-md: 0 10px 30px rgba(11, 48, 37, 0.08);
+  --shadow-lg: 0 20px 40px rgba(11, 48, 37, 0.12);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(2, 132, 199, 0.06);
 }
 
 /* ==========================================================================
@@ -147,7 +147,7 @@ a {
 
 .btn-premium-secondary {
   background: var(--accent);
-  color: #0A1E36;
+  color: var(--primary);
   font-weight: 600;
   padding: 0.8rem 2rem;
   border-radius: 50px;
@@ -280,7 +280,7 @@ section {
 }
 
 .navbar-brand-logo .brand-name {
-  color: var(--primary) !important;
+  color: var(--text-main) !important;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -407,29 +407,95 @@ section {
     left: 0;
     width: 100vw;
     height: calc(100vh - var(--header-height));
-    background: var(--bg-main);
+    background: var(--bg-main) !important;
     z-index: 1040;
-    padding: 2rem;
+    padding: 2.5rem 1.5rem;
     overflow-y: auto;
     transform: translateX(-100%);
     transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
   }
   .navbar-collapse-mobile.show { transform: translateX(0); }
   .navbar-rallyx.scrolled .navbar-collapse-mobile {
     top: 70px;
     height: calc(100vh - 70px);
   }
-  .navbar-rallyx .navbar-nav { text-align: center; }
-  .navbar-rallyx .navbar-nav .nav-link,
-  .navbar-rallyx .navbar-nav .dropdown-toggle {
+  
+  .navbar-rallyx .navbar-nav { 
+    text-align: center !important; 
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  .navbar-rallyx .navbar-nav .nav-item {
+    margin-bottom: 0.75rem;
+    width: 100%;
+    display: flex;
     justify-content: center;
   }
+  
+  .navbar-rallyx .navbar-nav .nav-link {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+    padding: 0.8rem 1.8rem !important;
+    border-radius: 12px;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition-fast);
+  }
+  
+  .navbar-rallyx .navbar-nav .nav-link:hover,
+  .navbar-rallyx .navbar-nav .nav-link.active {
+    color: var(--accent) !important;
+    background: rgba(var(--primary-rgb), 0.05) !important;
+    border-color: rgba(var(--accent-rgb), 0.15) !important;
+  }
+  
+  /* Dropdown styling for inline collapse on mobile */
+  .navbar-collapse-mobile .dropdown-menu {
+    position: static !important;
+    float: none;
+    background: rgba(var(--primary-rgb), 0.03) !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 0.5rem;
+    padding: 0.5rem !important;
+    width: 100%;
+    border-radius: 12px;
+    transform: none !important;
+    text-align: center !important;
+  }
+  
+  .navbar-collapse-mobile .dropdown-item {
+    font-size: 1.05rem !important;
+    padding: 0.7rem 1.2rem !important;
+    color: var(--text-muted) !important;
+    text-align: center !important;
+    border-radius: 8px;
+    transition: var(--transition-fast);
+  }
+  
+  .navbar-collapse-mobile .dropdown-item:hover {
+    color: var(--accent) !important;
+    background: rgba(var(--accent-rgb), 0.05) !important;
+  }
+  
   .navbar-collapse-mobile .d-flex.align-items-center {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     gap: 1rem !important;
   }
+  
   .navbar-collapse-mobile .btn-premium-outline,
   .navbar-collapse-mobile .btn-premium-primary {
     flex: 0 0 100%;
@@ -437,6 +503,7 @@ section {
     text-align: center;
     max-width: 100%;
   }
+  
   .reveal-left, .reveal-right {
     opacity: 0;
     transform: translateY(20px);
@@ -445,6 +512,16 @@ section {
   .reveal-left.active, .reveal-right.active {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Spacing overrides for tablets (768px and up) inside mobile collapse */
+  @media (min-width: 768px) {
+    .navbar-collapse-mobile {
+      padding: 4.5rem 3.5rem !important;
+    }
+    .navbar-rallyx .navbar-nav .nav-item {
+      margin-bottom: 1.5rem !important;
+    }
   }
 }
 
@@ -597,7 +674,7 @@ section {
   letter-spacing: 0.02em;
 }
 
-.footer-links { list-style: none; }
+.footer-links { list-style: none; padding-left: 0; }
 .footer-links li { margin-bottom: 0.8rem; }
 .footer-links a {
   color: var(--text-muted);
@@ -879,77 +956,120 @@ body.dark-mode .testimonial-quote {
   width: 100%;
 }
 
-/* ── About Hero: Diagonal split dark-left layout ── */
+/* ── About Hero ── */
 .about-hero {
-  min-height: 380px;
-  background: url('../images/coach_profile.png') center/cover no-repeat;
+  background-color: var(--primary);
 }
-
 .about-hero .page-hero-overlay {
-  background: linear-gradient(180deg,
-    rgba(10, 30, 54, 0.9) 0%,
-    rgba(10, 30, 54, 0.7) 100%
-  );
+  background: linear-gradient(180deg, rgba(10, 30, 54, 0.9) 0%, rgba(10, 30, 54, 0.7) 100%);
 }
-
 .about-hero .page-hero-content {
   padding: 80px 0 60px;
-  text-align: center;
 }
 
-/* ── Services Hero: Centered with accent underline ── */
+/* ── Services Hero ── */
 .services-hero {
-  min-height: 360px;
-  background: url('../images/footwork_training.png') center 40%/cover no-repeat;
+  background-color: var(--primary);
 }
-
 .services-hero .page-hero-overlay {
-  background: linear-gradient(180deg,
-    rgba(10, 30, 54, 0.88) 0%,
-    rgba(0, 82, 255, 0.6) 100%
-  );
+  background: linear-gradient(180deg, rgba(10, 30, 54, 0.88) 0%, rgba(0, 82, 255, 0.6) 100%);
 }
-
 .services-hero .page-hero-content {
   padding: 80px 0 60px;
-  text-align: center;
 }
 
-/* ── Gallery Hero: Vibrant image-forward with side bar ── */
+/* ── Gallery Hero ── */
 .gallery-hero {
-  min-height: 340px;
-  background: url('../images/singles_smash.png') center 30%/cover no-repeat;
+  background-color: var(--primary);
 }
-
 .gallery-hero .page-hero-overlay {
-  background: linear-gradient(90deg,
-    rgba(10, 30, 54, 0.92) 0%,
-    rgba(10, 30, 54, 0.3) 60%,
-    rgba(204, 255, 0, 0.08) 100%
-  );
+  background: linear-gradient(90deg, rgba(10, 30, 54, 0.92) 0%, rgba(10, 30, 54, 0.3) 60%, rgba(204, 255, 0, 0.08) 100%);
 }
-
 .gallery-hero .page-hero-content {
   padding: 70px 0 50px;
-  text-align: left;
 }
 
-/* ── Contact Hero: Full overlay with centered content ── */
+/* ── Contact Hero ── */
 .contact-hero {
-  min-height: 320px;
-  background: url('../images/trophy_ceremony.png') center 40%/cover no-repeat;
+  background-color: var(--primary);
 }
-
 .contact-hero .page-hero-overlay {
-  background: radial-gradient(ellipse at 50% 80%,
-    rgba(0, 82, 255, 0.4) 0%,
-    rgba(10, 30, 54, 0.92) 65%
-  );
+  background: radial-gradient(ellipse at 50% 80%, rgba(0, 82, 255, 0.4) 0%, rgba(10, 30, 54, 0.92) 65%);
 }
-
 .contact-hero .page-hero-content {
   padding: 70px 0 50px;
-  text-align: center;
+}
+
+/* ── Responsive Heights and Background Splits ── */
+.about-hero, .services-hero, .gallery-hero, .contact-hero {
+  min-height: 380px;
+}
+
+/* 360px and below mobile: prevent images from touching borders */
+@media (max-width: 576px) {
+  .page-hero img {
+    width: 90% !important;
+    max-width: calc(100% - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* 768px breakpoint: height increase for all pages' hero images */
+@media (min-width: 768px) {
+  .page-hero img {
+    height: 480px !important;
+    max-height: 480px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero-classic-img-frame img {
+    height: 460px !important;
+  }
+}
+
+/* 1024px and 1440px breakpoint: height increase and clear background image to split layout */
+@media (min-width: 1024px) {
+  .about-hero, .services-hero, .gallery-hero, .contact-hero {
+    min-height: 520px;
+    background-image: none !important;
+    background-color: var(--primary) !important;
+  }
+  .page-hero-overlay {
+    background: linear-gradient(90deg, rgba(var(--primary-rgb), 0.96) 0%, rgba(var(--primary-rgb), 0.8) 50%, rgba(var(--electric-blue-rgb), 0.15) 100%) !important;
+  }
+  
+  /* Center align the left-side text contents in page-hero sections */
+  .page-hero .col-lg-6:first-child {
+    text-align: center !important;
+  }
+  .page-hero .page-hero-title-bar::after {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .page-hero .col-lg-6:first-child p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Home 1 Hero left-side text center aligned at 1024px and 1440px */
+  .hero-classic .col-lg-7 {
+    text-align: center !important;
+  }
+  .hero-classic .desc {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-classic .d-grid.d-sm-flex {
+    justify-content: center !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .about-hero, .services-hero, .gallery-hero, .contact-hero {
+    min-height: 600px;
+  }
 }
 
 /* Accent line decoration below hero titles */
@@ -1057,30 +1177,30 @@ body.home-2-page .hero-luxury .gradient-text-neon {
 /* Glass cards on home-2 light mode */
 body.home-2-page:not(.dark-mode) .glass-card {
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(10, 30, 54, 0.1);
-  box-shadow: 0 18px 40px rgba(10, 30, 54, 0.08);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 18px 40px rgba(var(--primary-rgb), 0.08);
 }
 
 /* Dark mode for home-2 */
 body.home-2-page.dark-mode {
-  background: #06090F;
+  background: var(--bg-main);
   color: var(--text-main);
 }
 
 body.home-2-page.dark-mode section.bg-black,
 body.home-2-page.dark-mode section[style*="background-color: #0b0f19"],
 body.home-2-page.dark-mode section[style*="background: #0b0f19"] {
-  background: #06090F !important;
+  background: var(--bg-main) !important;
 }
 
 body.home-2-page.dark-mode .hero-luxury-overlay {
-  background: linear-gradient(180deg, rgba(6, 9, 15, 0.65) 0%, rgba(6, 9, 15, 0.9) 100%) !important;
+  background: linear-gradient(180deg, rgba(var(--primary-rgb), 0.65) 0%, rgba(var(--primary-rgb), 0.9) 100%) !important;
 }
 
 body.home-2-page.dark-mode .glass-card {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 8px 32px 0 rgba(204, 255, 0, 0.05);
+  background: var(--bg-card);
+  border: var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(var(--accent-rgb), 0.05);
 }
 
 /* Home-2 footer follows global theme styling */
@@ -1299,7 +1419,9 @@ body.home-2-page:not(.dark-mode) .home-2-gallery-header .text-white {
 
   /* Page hero left-aligned → center on mobile */
   .about-hero .page-hero-content,
-  .gallery-hero .page-hero-content {
+  .services-hero .page-hero-content,
+  .gallery-hero .page-hero-content,
+  .contact-hero .page-hero-content {
     text-align: center;
   }
 

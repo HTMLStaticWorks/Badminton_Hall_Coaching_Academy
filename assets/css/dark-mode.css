@@ -4,14 +4,18 @@
 
 /* Overrides root variables when dark-mode class is active on body */
 body.dark-mode, [data-bs-theme="dark"] {
-  --bg-main: #080C14;          /* Luxury Dark Charcoal/Blue */
-  --bg-card: rgba(15, 23, 42, 0.6);
-  --bg-navbar: rgba(8, 12, 20, 0.85);
-  --border-color: rgba(255, 255, 255, 0.06);
-  --text-main: #F8FAFC;
-  --text-muted: #94A3B8;
-  --glass-border: 1px solid rgba(255, 255, 255, 0.06);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 82, 255, 0.06);
+  --bg-main: #040E0A;          /* Midnight Forest Green */
+  --bg-card: rgba(10, 31, 25, 0.6);
+  --bg-navbar: rgba(4, 14, 10, 0.85);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-main: #ECFDF5;        /* Soft Mint/White */
+  --text-muted: #8DD3B9;       /* Light Mint/Teal */
+  --accent: #FF781A;           /* Brighter Orange for dark mode contrast */
+  --accent-rgb: 255, 120, 26;
+  --electric-blue: #38BDF8;    /* Lighter Sky Blue */
+  --electric-blue-rgb: 56, 189, 248;
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 163, 137, 0.06);
   
   /* Brighten text colors slightly for high contrast */
   color-scheme: dark;
