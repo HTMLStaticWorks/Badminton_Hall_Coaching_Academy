@@ -293,22 +293,29 @@
         
         <!-- Quick Global Settings & User Profile -->
         <div class="d-flex align-items-center gap-3">
-          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle RTL direction">RTL</button>
-          <button class="utility-btn" id="theme-toggle" title="Toggle dark mode">
+          <button class="utility-btn font-monospace d-none d-sm-flex" id="rtl-toggle" title="Toggle RTL direction">RTL</button>
+          <button class="utility-btn d-none d-sm-flex" id="theme-toggle" title="Toggle dark mode">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.277 7.277a7.21 7.21 0 0 0 3.46-.878.767.767 0 0 1 .858.08.77 0 0 1 .08.858 7.211 7.211 0 0 1-7.602 4.168 7.272 7.272 0 0 1-5.677-5.677 7.27 7.27 0 0 1 4.169-7.601z"/></svg>
           </button>
 
-          <!-- User Profile Panel -->
-          <div class="dashboard-profile-panel">
-            <div class="dashboard-profile-avatar-wrap">
-              <div class="dashboard-profile-avatar">MC</div>
-              <span class="status-dot"></span>
+          <!-- User Profile Panel Dropdown -->
+          <div class="dropdown">
+            <div class="dashboard-profile-panel" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="dashboard-profile-avatar-wrap">
+                <div class="dashboard-profile-avatar">MC</div>
+                <span class="status-dot"></span>
+              </div>
+              <div class="dashboard-profile-info d-none d-sm-flex">
+                <span class="dashboard-profile-name">Marcus Chen</span>
+                <span class="dashboard-profile-role">Pro Member &bull; Rank #1</span>
+              </div>
+              <svg class="dashboard-profile-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
             </div>
-            <div class="dashboard-profile-info d-none d-sm-flex">
-              <span class="dashboard-profile-name">Marcus Chen</span>
-              <span class="dashboard-profile-role">Pro Member &bull; Rank #1</span>
-            </div>
-            <svg class="dashboard-profile-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm glass-card p-2" style="background: var(--bg-card); min-width: 180px; z-index: 1050;">
+              <li><a class="dropdown-item rounded-3 py-2" href="#" onclick="document.querySelector('[data-section=\'profile\']').click();">Profile Settings</a></li>
+              <li><hr class="dropdown-divider" style="border-color: var(--border-color);"></li>
+              <li><a class="dropdown-item rounded-3 py-2 text-danger" href="login.html">Log Out</a></li>
+            </ul>
           </div>
         </div>
       </header>
