@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore NEXSHOT Badminton services: real-time court reservations, personalized coaching cohorts, and championship tournament brackets.">
+  <meta name="keywords" content="badminton lessons, court reserve, sports coaching, local tournament registry">
+  <meta name="author" content="NEXSHOT Performance Center">
+  <title>NEXSHOT — Sports Services & Academy Tiers</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230052FF'><path d='M11 16h2V3a1 1 0 0 0-2 0v13z'/><path d='M8.5 16l1.5-11.5a1 1 0 0 0-1.9-.4l-1.8 11.2a.5.5 0 0 0 .5.7h1.7z'/><path d='M15.5 16l-1.5-11.5a1 1 0 0 1 1.9-.4l1.8 11.2a.5.5 0 0 1-.5.7h-1.7z'/><path d='M9 17.5a3 3 0 0 0 6 0H9z'/><path d='M8 12.5h8v1H8z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body class="services-page">
+
+  <!-- ==========================================================================
+       Header / Navigation Bar
+       ========================================================================== */ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-rallyx">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <div class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 2a1 1 0 0 0-.707 1.707L7 4.414V17a3 3 0 0 0 3 3h.5a.5.5 0 0 0 .5-.5V17h-1v-1h1v-1h-1v-1h1v-1h-1v-1h1V11h-1v-1h1V9h-1V8h1V6.414l.707-.707A1 1 0 0 0 12 4h-.5L11 3.5V2H7zm5 2.5.5.5H16a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-5.5l.5-1H16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-3.586L12 5.5V4.5z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">NEXSHOT</span>
+          <span class="brand-sub">Performance Center</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse navbar-collapse-mobile" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm glass-card p-2">
+              <li><a class="dropdown-item rounded-3 py-2" href="index.html">Home</a></li>
+              <li><a class="dropdown-item rounded-3 py-2" href="home-2.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+
+        <!-- Right Side Utility Controls & CTAs -->
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <!-- RTL Switcher -->
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle Text Direction" aria-label="Toggle RTL direction">RTL</button>
+          
+          <!-- Theme Toggle -->
+          <button class="utility-btn" id="theme-toggle" title="Toggle Light/Dark Mode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
+              <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.277 7.277a7.21 7.21 0 0 0 3.46-.878.767.767 0 0 1 .858.08.77.77 0 0 1 .08.858 7.211 7.211 0 0 1-7.602 4.168 7.272 7.272 0 0 1-5.677-5.677 7.27 7.27 0 0 1 4.169-7.601z"/>
+            </svg>
+          </button>
+
+          <!-- Login (Secondary CTA) -->
+          <a href="login.html" class="btn-premium-outline">Login</a>
+
+          <!-- Book Now (Primary CTA) -->
+          <a href="booking.html" class="btn-premium-primary">Book Court</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       Hero Banner — Centered with gradient overlay, accent line
+       ========================================================================== -->
+  <section class="page-hero services-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 reveal text-center">
+          <span class="section-tag" style="color: var(--accent);">NEXSHOT Offerings</span>
+          <h1 class="text-white mb-3 page-hero-title-bar centered" style="font-size: clamp(36px, 6vw, 64px);">Our Club Offerings</h1>
+          <p class="mx-auto mb-4" style="max-width: 600px; color: rgba(255,255,255,0.82);">Review our court schedules, personalized mentoring plans, and global tournament options.</p>
+          <a href="booking.html" class="btn-premium-secondary px-5">Book a Court Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Court Booking Service Section
+       ========================================================================== */ -->
+  <section>
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal-left">
+          <span class="section-tag">01 / RESERVATIONS</span>
+          <h2 class="section-title">Premium Smart Court Bookings</h2>
+          <p>We operate 10 professional-grade indoor courts. Each court layout features anti-glare overhead LED light pods to ensure optimal shuttle visibility and high ceiling clearance to support clears.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2 d-flex align-items-center gap-2">⏱️ <strong>Real-time availability:</strong> Grid updates instantly based on active checkout bookings.</li>
+            <li class="mb-2 d-flex align-items-center gap-2">🔄 <strong>Flexible slots selection:</strong> Book in 1-hour or 2-hour consecutive intervals.</li>
+            <li class="d-flex align-items-center gap-2">💳 <strong>Secure checkout:</strong> Integrated placeholder modules for cards, Apple Pay, and Google Pay.</li>
+          </ul>
+          <a href="booking.html" class="btn-premium-primary">Reserve a Court Now</a>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <!-- Calendar Interface Teaser -->
+          <div class="glass-card bg-opacity-10" style="border: 1.5px solid var(--border-color);">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h3 class="h6 mb-0" style="font-weight: 500;">📅 Interactive Calendar Preview</h3>
+              <span class="badge bg-success">Live Grid</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small text-muted">Select Target Date</label>
+              <input type="date" class="form-control rounded-3" value="2026-06-19" disabled>
+            </div>
+            <div class="list-group list-group-flush">
+              <div class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-2 border-secondary border-opacity-25" style="font-size: 0.9rem;">
+                <span>Court 01 - 09:00 AM</span>
+                <span class="text-success small">● Available</span>
+              </div>
+              <div class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-2 border-secondary border-opacity-25" style="font-size: 0.9rem; opacity:0.6;">
+                <span>Court 02 - 10:30 AM</span>
+                <span class="text-danger small">● Booked</span>
+              </div>
+              <div class="list-group-item bg-transparent d-flex justify-content-between align-items-center px-0 py-2 border-0" style="font-size: 0.9rem;">
+                <span>Court 03 - 11:00 AM</span>
+                <span class="text-success small">● Available</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Coaching Programs Section
+       ========================================================================== */ -->
+  <section class="bg-light-subtle">
+    <div class="container">
+      <div class="row align-items-center mb-5 reveal">
+        <div class="col-md-6 text-start">
+          <span class="section-tag">02 / ACADEMY</span>
+          <h2 class="section-title">Professional Coaching Academy</h2>
+        </div>
+        <div class="col-md-6 text-md-end text-start">
+          <p class="mb-0 text-muted">RALLYX offers structured curricula designed to develop motor mechanics, reflex speeds, and endurance conditioning across all levels.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Beginner Training Card -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge mb-3 bg-secondary text-dark">Tier 1</span>
+              <h3 class="h5 mb-3" style="font-weight: 500;">Beginner Training</h3>
+              <p class="small text-muted mb-4">Master basic forehand clearances, simple low serves, wrist movements, and core lateral court steps.</p>
+            </div>
+            <a href="service-details.html?type=coaching&level=beginner" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+          </div>
+        </div>
+
+        <!-- Advanced Training Card -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge mb-3 bg-primary text-white">Tier 2</span>
+              <h3 class="h5 mb-3" style="font-weight: 500;">Advanced Training</h3>
+              <p class="small text-muted mb-4">Improve cross-court net drop returns, defensive block saves, and double partner rotation plays.</p>
+            </div>
+            <a href="service-details.html?type=coaching&level=advanced" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+          </div>
+        </div>
+
+        <!-- Professional Coaching Card -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between" style="border-color: rgba(204,255,0,0.4);">
+            <div>
+              <span class="badge mb-3 text-dark" style="background: var(--accent);">Tier 3</span>
+              <h3 class="h5 mb-3" style="font-weight: 500;">Professional Coach</h3>
+              <p class="small text-muted mb-4">1-on-1 intensive video feedback loop, jump smashes clears, stamina intervals, and tactical bracket drills.</p>
+            </div>
+            <a href="service-details.html?type=coaching&level=pro" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+          </div>
+        </div>
+
+        <!-- Kids Academy Card -->
+        <div class="col-md-6 col-xl-3 reveal">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge mb-3 bg-dark text-light">Tier 4</span>
+              <h3 class="h5 mb-3" style="font-weight: 500;">Kids Academy</h3>
+              <p class="small text-muted mb-4">Cardio coordination play, safe weight workouts, and minor matches structured for ages 6 to 14.</p>
+            </div>
+            <a href="service-details.html?type=coaching&level=kids" class="btn-premium-outline w-100 justify-content-center">View Pricing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Tournament Management Section
+       ========================================================================== */ -->
+  <section>
+    <div class="container">
+      <div class="row align-items-center g-5 flex-lg-row-reverse">
+        <div class="col-lg-6 reveal-right">
+          <span class="section-tag">03 / COMPETITIVE</span>
+          <h2 class="section-title">Tournament Management Hub</h2>
+          <p>Unleash your competitive drive in our official brackets. RALLYX manages full seasonal ladders, structured division brackets, and match schedules accessible from your user panel.</p>
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2 d-flex align-items-center gap-2">🏆 <strong>Tournament registration:</strong> Sign up for Singles/Doubles groups directly.</li>
+            <li class="mb-2 d-flex align-items-center gap-2">📊 <strong>Dynamic player rankings:</strong> Gain leaderboard points for every match victory.</li>
+            <li class="d-flex align-items-center gap-2">🗓️ <strong>Match scheduling:</strong> Auto calendar integrations show next opponent matchups.</li>
+          </ul>
+          <a href="service-details.html?type=tournament" class="btn-premium-primary">Register for Next Event</a>
+        </div>
+        <div class="col-lg-6 reveal-left">
+          <div class="glass-card bg-opacity-10" style="border: 1.5px solid var(--border-color);">
+            <h3 class="h5 mb-3" style="font-weight: 500;">📅 Upcoming Bracket Schedule</h3>
+            <div class="table-responsive">
+              <table class="table table-sm table-hover mb-0" style="font-size: 0.9rem;">
+                <thead>
+                  <tr>
+                    <th>Match ID</th>
+                    <th>Division</th>
+                    <th>Court</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#M-204</td>
+                    <td>Singles Division A</td>
+                    <td>Court 01</td>
+                    <td><span class="text-success small">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>#M-205</td>
+                    <td>Doubles Division B</td>
+                    <td>Court 03</td>
+                    <td><span class="text-muted small">02:30 PM</span></td>
+                  </tr>
+                  <tr>
+                    <td>#M-206</td>
+                    <td>Singles Junior Tier</td>
+                    <td>Court 05</td>
+                    <td><span class="text-muted small">04:00 PM</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== */ -->
+  <footer class="footer-rallyx">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo and info -->
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-logo" href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm.36-4.57c-.16.48-.61.85-1.12.87-.65.03-1.19-.48-1.22-1.13-.01-.33.09-.64.28-.88l2.67-3.35c.34-.43.86-.69 1.41-.69H16c1.1 0 2 .9 2 2v2.74c0 .54-.25 1.05-.67 1.39l-4.97 4.09z"/>
+            </svg>
+            <span>RALLYX</span>
+          </a>
+          <p class="footer-desc">A premium athletic community and sports environment built for badminton enthusiasts, tournament champions, and performance students.</p>
+          <div class="footer-socials">
+            <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a>
+            <a href="https://instagram.com" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04 1.849.222 2.428.42 2.931a3.9 3.9 0 0 0 .923 1.417 3.9 3.9 0 0 0 1.417.923c.51.198 1.09.333 1.942.372C5.555 16 5.827 16 8.001 16c2.172 0 2.44 0 3.297-.04 1.849-.039 2.428-.222 2.931-.42a3.9 3.9 0 0 0 1.417-.923 3.9 3.9 0 0 0 .923-1.417c.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8.001c0-2.172-.01-2.44-.048-3.297-.04-1.849-.222-2.428-.42-2.931a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.197-1.093-.332-1.942-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></a>
+            <a href="https://twitter.com" class="footer-social-link" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="dashboard.html">Member Portal</a></li>
+            <li><a href="coming-soon.html">Event Schedule</a></li>
+            <li><a href="404.html">Support Desk</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4 class="footer-title">Join the RALLYX Newsletter</h4>
+          <p>Get priority updates on slot openings, coaches schedules, and monthly league registries direct to your inbox.</p>
+          <form class="newsletter-form mt-4" id="newsletterForm">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your email address" required aria-label="Email address">
+              <button class="newsletter-btn" type="submit" aria-label="Subscribe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="row footer-bottom">
+        <div class="col-md-6 text-start mb-3 mb-md-0">
+          <span>&copy; 2026 RALLYX Performance Club. All rights reserved.</span>
+        </div>
+        <div class="col-md-6 text-md-end text-start">
+          <a href="coming-soon.html" class="me-3">Privacy Policy</a>
+          <a href="coming-soon.html">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" title="Go to top" aria-label="Scroll back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/></svg>
+  </button>
+
+  <!-- Bootstrap 5 Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

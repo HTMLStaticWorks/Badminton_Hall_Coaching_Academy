@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RALLYX Badminton Performance Club - Page Not Found.">
+  <title>RALLYX — Out of Bounds (404)</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230052FF'><path d='M11 16h2V3a1 1 0 0 0-2 0v13z'/><path d='M8.5 16l1.5-11.5a1 1 0 0 0-1.9-.4l-1.8 11.2a.5.5 0 0 0 .5.7h1.7z'/><path d='M15.5 16l-1.5-11.5a1 1 0 0 1 1.9-.4l1.8 11.2a.5.5 0 0 1-.5.7h-1.7z'/><path d='M9 17.5a3 3 0 0 0 6 0H9z'/><path d='M8 12.5h8v1H8z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 50%, rgba(0, 82, 255, 0.1), var(--primary) 80%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .error-card {
+      max-width: 540px;
+      width: 100%;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 4rem 3rem;
+      box-shadow: var(--shadow-lg);
+    }
+    body.dark-mode .error-card {
+      background: rgba(15, 23, 42, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       404 Card
+       ========================================================================== */ -->
+  <div class="error-card text-center text-white reveal active">
+    <!-- Brand Logo -->
+    <a class="footer-logo justify-content-center mb-4" href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm.36-4.57c-.16.48-.61.85-1.12.87-.65.03-1.19-.48-1.22-1.13-.01-.33.09-.64.28-.88l2.67-3.35c.34-.43.86-.69 1.41-.69H16c1.1 0 2 .9 2 2v2.74c0 .54-.25 1.05-.67 1.39l-4.97 4.09z"/>
+      </svg>
+      <span style="letter-spacing:0.05em;">RALLYX</span>
+    </a>
+
+    <!-- Animated Out of Bounds Shuttle -->
+    <svg class="floating-shuttle my-4" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 100 100" fill="none" style="filter: drop-shadow(0 10px 15px rgba(255,0,0,0.3));">
+      <path d="M50 10 C35 35 25 70 25 85 C25 87 27 89 29 89 L71 89 C73 89 75 87 75 85 C75 70 65 35 50 10 Z" stroke="rgba(255,0,0,0.4)" stroke-width="2" stroke-dasharray="4 4"/>
+      <path d="M50 18 L35 75 L65 75 Z" stroke="#FF4D4D" stroke-width="3" fill="rgba(255,77,77,0.1)"/>
+      <circle cx="50" cy="82" r="6" fill="#FF4D4D"/>
+      <line x1="28" y1="80" x2="72" y2="80" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+    </svg>
+
+    <h1 class="h2 text-white mb-2" style="font-weight: 500;">Out of Bounds</h1>
+    <span class="badge bg-danger mb-4">Error Code 404</span>
+    <p class="text-white-50 small mb-5">The directory path or page route you are searching for is out of play. Let's return to the center of the court.</p>
+
+    <a href="index.html" class="btn-premium-secondary py-3 px-5">Return to Home Court</a>
+  </div>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

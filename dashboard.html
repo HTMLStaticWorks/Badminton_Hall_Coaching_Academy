@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NEXSHOT Player Portal. Manage court schedules, review coaching comments, analyze radar charts, and view tournament brackets.">
+  <title>NEXSHOT — Athlete Control Center</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230052FF'><path d='M11 16h2V3a1 1 0 0 0-2 0v13z'/><path d='M8.5 16l1.5-11.5a1 1 0 0 0-1.9-.4l-1.8 11.2a.5.5 0 0 0 .5.7h1.7z'/><path d='M15.5 16l-1.5-11.5a1 1 0 0 1 1.9-.4l1.8 11.2a.5.5 0 0 1-.5.7h-1.7z'/><path d='M9 17.5a3 3 0 0 0 6 0H9z'/><path d='M8 12.5h8v1H8z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* Custom inner Dashboard Layout */
+    .dashboard-layout {
+      min-height: 100vh;
+      display: flex;
+    }
+    
+    .dashboard-sidebar {
+      width: 280px;
+      /* Match navbar header background — adapts in light & dark mode */
+      background: var(--bg-navbar);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-right: 1px solid var(--border-color);
+      color: var(--text-main);
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+      box-shadow: 2px 0 16px rgba(0, 0, 0, 0.06);
+    }
+    
+    .dashboard-content-area {
+      flex-grow: 1;
+      background: var(--bg-main);
+      padding: 2.5rem;
+      overflow-y: auto;
+    }
+    
+    .dashboard-sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: var(--transition-fast);
+      border-radius: 0 8px 8px 0;
+      margin-right: 0.75rem;
+      margin-bottom: 2px;
+    }
+    
+    /* Desktop Sidebar Links — adaptive to light/dark via CSS vars */
+    .dashboard-sidebar .dashboard-sidebar-link {
+      color: var(--text-muted);
+    }
+    .dashboard-sidebar .dashboard-sidebar-link:hover, 
+    .dashboard-sidebar .dashboard-sidebar-link.active {
+      color: var(--electric-blue);
+      background: rgba(0, 82, 255, 0.07);
+      border-left-color: var(--accent);
+    }
+    .dashboard-sidebar .dashboard-sidebar-link.active {
+      color: var(--electric-blue);
+      background: rgba(0, 82, 255, 0.1);
+      font-weight: 600;
+    }
+
+    /* Offcanvas Sidebar Links (Adaptive to Light/Dark Mode) */
+    .offcanvas .dashboard-sidebar-link {
+      color: var(--text-muted);
+    }
+    .offcanvas .dashboard-sidebar-link:hover, 
+    .offcanvas .dashboard-sidebar-link.active {
+      color: var(--electric-blue);
+      background: rgba(0, 82, 255, 0.07);
+      border-left-color: var(--accent);
+    }
+    
+    .dashboard-stat-card {
+      border-radius: 16px;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+    
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 1199.98px) {
+      .dashboard-sidebar {
+        display: none;
+      }
+      .dashboard-layout {
+        display: block;
+      }
+      .dashboard-content-area {
+        padding: 0;
+        overflow-y: unset;
+      }
+      .dashboard-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--bg-main);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      }
+      .dashboard-section {
+        padding: 1.5rem 1rem !important;
+      }
+      #dashboardSectionTitle {
+        font-size: 1.1rem;
+        white-space: nowrap;
+      }
+      .dashboard-header .utility-btn {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Tournament & Court Booking sections: prevent cell text wrapping on all screen sizes */
+    #tournaments .table th,
+    #tournaments .table td,
+    #court-booking .table th,
+    #court-booking .table td {
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    /* Dashboard section headings: prevent wrapping on mobile */
+    @media (max-width: 767.98px) {
+      #tournaments .glass-card,
+      #court-booking .glass-card {
+        overflow: visible;
+        padding: 1.25rem;
+      }
+
+      #tournaments .h5,
+      #court-booking .h5 {
+        font-size: 0.95rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- ==========================================================================
+         Fixed Sidebar (Desktop View)
+         ========================================================================== */ -->
+    <aside class="dashboard-sidebar d-none d-xl-flex flex-column py-4">
+      <div>
+        <a class="navbar-brand navbar-brand-logo text-white px-4 mb-5" href="index.html">
+          <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 2a1 1 0 0 0-.707 1.707L7 4.414V17a3 3 0 0 0 3 3h.5a.5.5 0 0 0 .5-.5V17h-1v-1h1v-1h-1v-1h1v-1h-1v-1h1V11h-1v-1h1V9h-1V8h1V6.414l.707-.707A1 1 0 0 0 12 4h-.5L11 3.5V2H7zm5 2.5.5.5H16a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-5.5l.5-1H16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-3.586L12 5.5V4.5z"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">NEXSHOT</span>
+            <span class="brand-sub">Performance Center</span>
+          </div>
+        </a>
+
+        <!-- Sidebar Navigation links -->
+        <nav class="nav flex-column mb-4">
+          <a href="#" class="dashboard-sidebar-link active" data-section="overview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/><path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.99 7.99 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.63A7 7 0 0 0 8 3"/></svg>
+            <span>Overview</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="court-booking">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 8.5a.5.5 0 0 1 .8-.4l.9.9 2.4-2.4a.5.5 0 0 1 .7.7L10.5 10a.5.5 0 0 1-.7 0z"/></svg>
+            <span>Court Bookings</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="tournaments">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356-.043.01-.056.032L4.002 15h8l-1.216-.912-.056-.032-.043-.01-1.426-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469z"/></svg>
+            <span>Tournaments</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="training-progress">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/></svg>
+            <span>Training Progress</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/></svg>
+            <span>Profile Settings</span>
+          </a>
+        </nav>
+
+        <div class="px-4 mt-3">
+          <a href="index.html" class="btn-premium-outline w-100 justify-content-center">Log Out</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================================================
+         Offcanvas Sidebar (Mobile View)
+         ========================================================================== */ -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="dashboardSidebarOffcanvas" aria-labelledby="dashboardSidebarOffcanvasLabel">
+      <div class="offcanvas-header py-4 px-4">
+        <a href="index.html" class="offcanvas-title navbar-brand-logo mb-0 text-decoration-none" id="dashboardSidebarOffcanvasLabel">
+          <div class="brand-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 2a1 1 0 0 0-.707 1.707L7 4.414V17a3 3 0 0 0 3 3h.5a.5.5 0 0 0 .5-.5V17h-1v-1h1v-1h-1v-1h1v-1h-1v-1h1V11h-1v-1h1V9h-1V8h1V6.414l.707-.707A1 1 0 0 0 12 4h-.5L11 3.5V2H7zm5 2.5.5.5H16a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-5.5l.5-1H16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-3.586L12 5.5V4.5z"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">NEXSHOT</span>
+            <span class="brand-sub">Performance Center</span>
+          </div>
+        </a>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column p-0 py-4">
+        <nav class="nav flex-column mb-4">
+          <a href="#" class="dashboard-sidebar-link active" data-section="overview">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/><path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.99 7.99 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.63A7 7 0 0 0 8 3"/></svg>
+            <span>Overview</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="court-booking">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 8.5a.5.5 0 0 1 .8-.4l.9.9 2.4-2.4a.5.5 0 0 1 .7.7L10.5 10a.5.5 0 0 1-.7 0z"/></svg>
+            <span>Court Bookings</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="tournaments">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33 33 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935M3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356-.043.01-.056.032L4.002 15h8l-1.216-.912-.056-.032-.043-.01-1.426-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469z"/></svg>
+            <span>Tournaments</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="training-progress">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/></svg>
+            <span>Training Progress</span>
+          </a>
+          <a href="#" class="dashboard-sidebar-link" data-section="profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/></svg>
+            <span>Profile Settings</span>
+          </a>
+        </nav>
+        <div class="px-4 mt-3">
+          <a href="index.html" class="btn-premium-outline w-100 justify-content-center">Log Out</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         Dashboard Main Content Area
+         ========================================================================== */ -->
+    <main class="dashboard-content-area">
+      <!-- Section Header -->
+      <header class="dashboard-header text-start">
+        <div class="d-flex align-items-center gap-3">
+          <!-- Mobile Hamburger Toggle Menu -->
+          <button class="btn btn-outline-secondary d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#dashboardSidebarOffcanvas" aria-controls="dashboardSidebarOffcanvas">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg>
+          </button>
+          <h1 class="h3 mb-0" id="dashboardSectionTitle" style="font-weight: 600;">Overview</h1>
+        </div>
+        
+        <!-- Quick Global Settings & User Profile -->
+        <div class="d-flex align-items-center gap-3">
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle RTL direction">RTL</button>
+          <button class="utility-btn" id="theme-toggle" title="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.277 7.277a7.21 7.21 0 0 0 3.46-.878.767.767 0 0 1 .858.08.77 0 0 1 .08.858 7.211 7.211 0 0 1-7.602 4.168 7.272 7.272 0 0 1-5.677-5.677 7.27 7.27 0 0 1 4.169-7.601z"/></svg>
+          </button>
+
+          <!-- User Profile Panel -->
+          <div class="dashboard-profile-panel">
+            <div class="dashboard-profile-avatar-wrap">
+              <div class="dashboard-profile-avatar">MC</div>
+              <span class="status-dot"></span>
+            </div>
+            <div class="dashboard-profile-info d-none d-sm-flex">
+              <span class="dashboard-profile-name">Marcus Chen</span>
+              <span class="dashboard-profile-role">Pro Member &bull; Rank #1</span>
+            </div>
+            <svg class="dashboard-profile-caret" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- ==========================================================================
+           TAB 1: Overview
+           ========================================================================== */ -->
+      <section class="dashboard-section p-0" id="overview">
+        <!-- Numerical Stats Grid (Animated countUp counters) -->
+        <div class="row g-4 mb-5 text-start">
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Upcoming Bookings</span>
+              <h3 class="mb-0 text-primary" style="font-weight: 600;"><span class="dashboard-stat-counter" data-target="2">0</span> slots</h3>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Monthly Court Hours</span>
+              <h3 class="mb-0 text-success" style="font-weight: 600;"><span class="dashboard-stat-counter" data-target="18">0</span> hours</h3>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Membership Status</span>
+              <h3 class="mb-0" style="color: var(--accent); font-weight: 600;"><span class="dashboard-stat-counter" data-target="14">0</span> days left</h3>
+            </div>
+          </div>
+          <div class="col-sm-6 col-xl-3">
+            <div class="dashboard-stat-card">
+              <span class="small text-muted d-block mb-1">Tournament Points</span>
+              <h3 class="mb-0 text-info" style="font-weight: 600;"><span class="dashboard-stat-counter" data-target="2480">0</span> pts</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Training Hours Line Chart -->
+        <div class="row text-start">
+          <div class="col-12">
+            <div class="glass-card mb-4" style="min-height: 400px;">
+              <h3 class="h5 mb-4" style="font-weight: 500;">📅 Monthly Court & Training Hours</h3>
+              <div style="height: 320px; position:relative;">
+                <canvas id="sessionsChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 2: Court Booking History & Actions
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="court-booking">
+        <div class="glass-card text-start">
+          <h3 class="h5 mb-4" style="font-weight: 500;">📅 Upcoming Reserved Court Slots</h3>
+          
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>Reservation ID</th>
+                  <th>Date</th>
+                  <th>Court #</th>
+                  <th>Time Slot</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#RES-9801</td>
+                  <td>June 19, 2026</td>
+                  <td>Court 01</td>
+                  <td>09:00 AM - 10:00 AM</td>
+                  <td><span class="badge bg-success">Confirmed</span></td>
+                  <td><button class="btn btn-sm btn-outline-danger" onclick="cancelReservation(this)">Cancel Slot</button></td>
+                </tr>
+                <tr>
+                  <td>#RES-9802</td>
+                  <td>June 21, 2026</td>
+                  <td>Court 03</td>
+                  <td>11:00 AM - 12:00 PM</td>
+                  <td><span class="badge bg-success">Confirmed</span></td>
+                  <td><button class="btn btn-sm btn-outline-danger" onclick="cancelReservation(this)">Cancel Slot</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 3: Tournament Enrollments
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="tournaments">
+        <div class="glass-card text-start">
+          <h3 class="h5 mb-4" style="font-weight: 500;">🏆 Your Registered Tournaments</h3>
+          
+          <div class="table-responsive mb-4">
+            <table class="table table-hover align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>Tournament Name</th>
+                  <th>Division</th>
+                  <th>Start Date</th>
+                  <th>Match Schedule</th>
+                  <th>Brackets Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Summer Smash Open 2026</strong></td>
+                  <td>Singles Division A</td>
+                  <td>July 12, 2026</td>
+                  <td>#M-204 vs Amina Yusuf</td>
+                  <td><span class="badge bg-primary">Registered</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="h5 mb-4" style="font-weight: 500;">📊 Live Leaderboard Rank - Division A</h3>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Player Name</th>
+                  <th>Win Ratio</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active">
+                  <td><strong>01</strong></td>
+                  <td><strong>Marcus Chen (You)</strong></td>
+                  <td>87.5%</td>
+                  <td><strong>2,480 pts</strong></td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td>Sarah Jenkins</td>
+                  <td>81.8%</td>
+                  <td>2,150 pts</td>
+                </tr>
+                <tr>
+                  <td>03</td>
+                  <td>Viktor Smirnov</td>
+                  <td>76.0%</td>
+                  <td>1,980 pts</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 4: Training Progress & Biomechanical Radar Charts
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="training-progress">
+        <div class="row g-4 text-start">
+          <!-- Biomechanical radar stats -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100" style="min-height: 400px;">
+              <h3 class="h5 mb-4" style="font-weight: 500;">📈 Athlete Skill Radar Analysis</h3>
+              <div style="height: 320px; position:relative;">
+                <canvas id="progressChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coach Comments Feedback Grid -->
+          <div class="col-lg-6">
+            <div class="glass-card h-100">
+              <h3 class="h5 mb-4" style="font-weight: 500;">💬 Coach Feedback Comments</h3>
+              
+              <div class="list-group list-group-flush bg-transparent">
+                <div class="list-group-item bg-transparent px-0 py-3 border-secondary border-opacity-10">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <strong class="text-main" style="font-weight: 500;">Coach Ronald Sterling</strong>
+                    <span class="small text-muted">June 14, 2026</span>
+                  </div>
+                  <p class="small text-muted mb-0">"Excellent lateral split-step recovery during the star-drills today. Grip changes between clears and drop shots look fast. Focus on hip extensions for higher smash velocities next week."</p>
+                </div>
+                <div class="list-group-item bg-transparent px-0 py-3 border-0">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <strong class="text-main" style="font-weight: 500;">Coach Ronald Sterling</strong>
+                    <span class="small text-muted">May 28, 2026</span>
+                  </div>
+                  <p class="small text-muted mb-0">"Watch racket faces on high flick serves. Defensive block recoveries show fast balance improvements."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 5: Member Profile Settings
+           ========================================================================== */ -->
+      <section class="dashboard-section d-none p-0" id="profile">
+        <div class="glass-card text-start">
+          <h3 class="h5 mb-4" style="font-weight: 500;">⚙️ Personal Settings</h3>
+          
+          <form id="profileSettingsForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label small">Athlete Display Name</label>
+                <input type="text" class="form-control rounded-3" value="Marcus Chen" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small">Email Address</label>
+                <input type="email" class="form-control rounded-3" value="marcus.chen@outlook.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small">Change Password</label>
+                <input type="password" class="form-control rounded-3" placeholder="••••••••">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label small">Current Membership Level</label>
+                <input type="text" class="form-control rounded-3" value="Pro Academy ($79/mo)" disabled>
+              </div>
+              <div class="col-12 mb-3">
+                <label class="form-label small">Preferred Court Notification Alerts</label>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="notifyEmail" checked>
+                  <label class="form-check-label small" for="notifyEmail">Email alerts for upcoming slot changes</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="notifySms" checked>
+                  <label class="form-check-label small" for="notifySms">SMS codes for keyless locker entry</label>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-premium-primary mt-3">Save Preferences</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Bootstrap 5 Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Dashboard Controller JS -->
+  <script src="assets/js/dashboard.js"></script>
+
+  <script>
+    // Handles reservation cancellations in the bookings grid
+    function cancelReservation(button) {
+      if (confirm("Are you sure you want to cancel this reserved court slot?")) {
+        const row = button.closest('tr');
+        row.style.opacity = '0.3';
+        button.disabled = true;
+        button.textContent = 'Cancelled';
+        
+        // Dynamic stats badge updates
+        const counter = document.querySelector('.dashboard-stat-counter[data-target="2"]');
+        if (counter) {
+          counter.textContent = '1';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

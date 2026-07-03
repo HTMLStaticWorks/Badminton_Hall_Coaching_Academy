@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detailed benefits, pricing structures, and enrollment parameters for Court Memberships, Personal Coaching cohorts, and Tournament entries.">
+  <meta name="keywords" content="badminton pricing, court membership benefits, personal coaching packages, tournament register">
+  <meta name="author" content="RALLYX Performance Club">
+  <title>RALLYX — Service Program Details</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230052FF'><path d='M11 16h2V3a1 1 0 0 0-2 0v13z'/><path d='M8.5 16l1.5-11.5a1 1 0 0 0-1.9-.4l-1.8 11.2a.5.5 0 0 0 .5.7h1.7z'/><path d='M15.5 16l-1.5-11.5a1 1 0 0 1 1.9-.4l1.8 11.2a.5.5 0 0 1-.5.7h-1.7z'/><path d='M9 17.5a3 3 0 0 0 6 0H9z'/><path d='M8 12.5h8v1H8z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Header / Navigation Bar
+       ========================================================================== */ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-rallyx">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm.36-4.57c-.16.48-.61.85-1.12.87-.65.03-1.19-.48-1.22-1.13-.01-.33.09-.64.28-.88l2.67-3.35c.34-.43.86-.69 1.41-.69H16c1.1 0 2 .9 2 2v2.74c0 .54-.25 1.05-.67 1.39l-4.97 4.09z"/>
+        </svg>
+        <span>RALLYX</span>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <div class="collapse navbar-collapse navbar-collapse-mobile" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Home
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm glass-card p-2">
+              <li><a class="dropdown-item rounded-3 py-2" href="index.html">Home</a></li>
+              <li><a class="dropdown-item rounded-3 py-2" href="home-2.html">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+
+        <!-- Right Side Utility Controls & CTAs -->
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <!-- RTL Switcher -->
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle Text Direction" aria-label="Toggle RTL direction">RTL</button>
+          
+          <!-- Theme Toggle -->
+          <button class="utility-btn" id="theme-toggle" title="Toggle Light/Dark Mode" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
+              <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.277 7.277a7.21 7.21 0 0 0 3.46-.878.767.767 0 0 1 .858.08.77.77 0 0 1 .08.858 7.211 7.211 0 0 1-7.602 4.168 7.272 7.272 0 0 1-5.677-5.677 7.27 7.27 0 0 1 4.169-7.601z"/>
+            </svg>
+          </button>
+
+          <!-- Login (Secondary CTA) -->
+          <a href="login.html" class="btn-premium-outline">Login</a>
+
+          <!-- Book Now (Primary CTA) -->
+          <a href="booking.html" class="btn-premium-primary">Book Court</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       Hero Banner
+       ========================================================================== */ -->
+  <section class="py-5 bg-primary text-white text-center" style="background: radial-gradient(circle at 50% 50%, rgba(var(--electric-blue-rgb), 0.2), var(--primary) 90%) !important; padding: 140px 0 80px !important;">
+    <div class="container py-4 reveal">
+      <span class="section-tag" style="color: var(--accent);">Program Insights</span>
+      <h1 class="text-white mb-3" style="font-size: clamp(36px, 6vw, 64px);">Service Details</h1>
+      <p class="text-white-50 mx-auto" style="max-width: 600px;">Compare structures, analyze exclusive perks, and enroll in your customized coaching plan.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Tabbed Details Layout
+       ========================================================================== */ -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <!-- Sidebar Navigation Buttons -->
+        <div class="col-lg-3 mb-5 mb-lg-0 reveal-left">
+          <div class="glass-card p-3 sticky-top" style="top: 100px; z-index:100;">
+            <h3 class="h6 mb-3 text-muted" style="font-weight: 500;">SERVICE DIRECTORY</h3>
+            <div class="nav flex-column nav-pills" id="detailPills" role="tablist" aria-orientation="vertical">
+              <button class="nav-link active rounded-3 text-start py-3 mb-2" id="court-membership-tab" data-bs-toggle="pill" data-bs-target="#court-membership" type="button" role="tab" aria-controls="court-membership" aria-selected="true">
+                🏸 Court Membership
+              </button>
+              <button class="nav-link rounded-3 text-start py-3 mb-2" id="personal-coaching-tab" data-bs-toggle="pill" data-bs-target="#personal-coaching" type="button" role="tab" aria-controls="personal-coaching" aria-selected="false">
+                🏅 Personal Coaching
+              </button>
+              <button class="nav-link rounded-3 text-start py-3" id="tournament-reg-tab" data-bs-toggle="pill" data-bs-target="#tournament-reg" type="button" role="tab" aria-controls="tournament-reg" aria-selected="false">
+                🏆 Tournament Entry
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Contents -->
+        <div class="col-lg-9 reveal-right">
+          <div class="tab-content" id="detailPillsContent">
+            <!-- Court Membership Detail -->
+            <div class="tab-pane fade show active" id="court-membership" role="tabpanel" aria-labelledby="court-membership-tab">
+              <div class="glass-card">
+                <span class="badge bg-primary mb-3">FACILITIES & ACCESS</span>
+                <h2 class="mb-4" style="font-weight:500;">Badminton Court Memberships</h2>
+                <p class="lead">Gain priority reservation rights across our 10 professional-grade indoor courts. RALLYX memberships are structured to provide flexible scheduling and custom locker configurations.</p>
+                <h3 class="h5 mt-5 mb-3" style="font-weight:500;">🌟 Exclusive Member Benefits</h3>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2 checklist-item">✓ 7-day priority booking windows</li>
+                      <li class="mb-2 checklist-item">✓ Impact shock-absorption mats</li>
+                      <li class="checklist-item">✓ Free hot shower & lockers</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2 checklist-item">✓ Towel service & sports drinks</li>
+                      <li class="mb-2 checklist-item">✓ Guest access credits (2 per month)</li>
+                      <li class="checklist-item">✓ Guest lobby entrance privileges</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="border-top border-secondary border-opacity-25 mt-5 pt-4">
+                  <h3 class="h5 mb-3" style="font-weight:500;">Pricing Overview</h3>
+                  <div class="row align-items-center g-3">
+                    <div class="col-md-6">
+                      <span class="small text-muted d-block">Monthly cost starts from</span>
+                      <strong class="h2 text-primary">$29 <span class="small text-muted" style="font-size:0.9rem;">/ month</span></strong>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                      <a href="pricing.html" class="btn-premium-primary">View Pricing Page</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Personal Coaching Detail -->
+            <div class="tab-pane fade" id="personal-coaching" role="tabpanel" aria-labelledby="personal-coaching-tab">
+              <div class="glass-card">
+                <span class="badge bg-warning text-dark mb-3">1-ON-1 SKILLS DEVELOPMENT</span>
+                <h2 class="mb-4" style="font-weight:500;">Elite Personal Coaching</h2>
+                <p class="lead">Accelerate your technical clears, tactical drives, net drops, and jumping power clears. Our certified coaching mentors design custom drilling frameworks mapped directly to your active skill tier.</p>
+                
+                <h3 class="h5 mt-5 mb-3" style="font-weight:500;">🌟 Cohort Benefits</h3>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2 checklist-item">✓ Private video feedback loops</li>
+                      <li class="mb-2 checklist-item">✓ Footwork speed analysis</li>
+                      <li class="checklist-item">✓ Custom muscle coordination drills</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2 checklist-item">✓ Game tactical drills</li>
+                      <li class="mb-2 checklist-item">✓ Cardio interval routines</li>
+                      <li class="checklist-item">✓ Monthly progress chart tracking</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="border-top border-secondary border-opacity-25 mt-5 pt-4">
+                  <h3 class="h5 mb-3" style="font-weight:500;">Coaching Packages</h3>
+                  <div class="row align-items-center g-3">
+                    <div class="col-md-6">
+                      <span class="small text-muted d-block">Coaching blocks start from</span>
+                      <strong class="h2 text-primary">$45 <span class="small text-muted" style="font-size:0.9rem;">/ hour session</span></strong>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                      <a href="contact.html" class="btn-premium-primary">Book Consultation Session</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tournament Registration Detail -->
+            <div class="tab-pane fade" id="tournament-reg" role="tabpanel" aria-labelledby="tournament-reg-tab">
+              <div class="glass-card">
+                <span class="badge bg-success mb-3">COMPETITIVE SYSTEM</span>
+                <h2 class="mb-4" style="font-weight:500;">Championship Tournament Entries</h2>
+                <p class="lead">Test your reflexes in official seasonal open tournaments, monthly ladders, and partner bracket championships. Meet competitive rivals, acquire ranking ladder points, and win prize packages.</p>
+                
+                <h3 class="h5 mt-5 mb-3" style="font-weight:500;">🌟 Registration Inclusions</h3>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2 checklist-item">✓ BWF-certified match score boards</li>
+                      <li class="mb-2 checklist-item">✓ Standard double clears matches</li>
+                      <li class="checklist-item">✓ Match video recordings library</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2 checklist-item">✓ Commemorative jersey shirts</li>
+                      <li class="mb-2 checklist-item">✓ Sponsorship gear opportunities</li>
+                      <li class="checklist-item">✓ Custom trophy awards</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="border-top border-secondary border-opacity-25 mt-5 pt-4">
+                  <h3 class="h5 mb-3" style="font-weight:500;">Tournament Pricing</h3>
+                  <div class="row align-items-center g-3">
+                    <div class="col-md-6">
+                      <span class="small text-muted d-block">Entry fee starts from</span>
+                      <strong class="h2 text-primary">$15 <span class="small text-muted" style="font-size:0.9rem;">/ event entry</span></strong>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                      <a href="contact.html?subject=tournament" class="btn-premium-primary">Register For Tournament</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== */ -->
+  <footer class="footer-rallyx">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Logo and info -->
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-logo" href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm.36-4.57c-.16.48-.61.85-1.12.87-.65.03-1.19-.48-1.22-1.13-.01-.33.09-.64.28-.88l2.67-3.35c.34-.43.86-.69 1.41-.69H16c1.1 0 2 .9 2 2v2.74c0 .54-.25 1.05-.67 1.39l-4.97 4.09z"/>
+            </svg>
+            <span>RALLYX</span>
+          </a>
+          <p class="footer-desc">A premium athletic community and sports environment built for badminton enthusiasts, tournament champions, and performance students.</p>
+          <div class="footer-socials">
+            <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a>
+            <a href="https://instagram.com" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04 1.849.222 2.428.42 2.931a3.9 3.9 0 0 0 .923 1.417 3.9 3.9 0 0 0 1.417.923c.51.198 1.09.333 1.942.372C5.555 16 5.827 16 8.001 16c2.172 0 2.44 0 3.297-.04 1.849-.039 2.428-.222 2.931-.42a3.9 3.9 0 0 0 1.417-.923 3.9 3.9 0 0 0 .923-1.417c.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8.001c0-2.172-.01-2.44-.048-3.297-.04-1.849-.222-2.428-.42-2.931a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.197-1.093-.332-1.942-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></a>
+            <a href="https://twitter.com" class="footer-social-link" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-title">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="dashboard.html">Member Portal</a></li>
+            <li><a href="coming-soon.html">Event Schedule</a></li>
+            <li><a href="404.html">Support Desk</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4 class="footer-title">Join the RALLYX Newsletter</h4>
+          <p>Get priority updates on slot openings, coaches schedules, and monthly league registries direct to your inbox.</p>
+          <form class="newsletter-form mt-4" id="newsletterForm">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your email address" required aria-label="Email address">
+              <button class="newsletter-btn" type="submit" aria-label="Subscribe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="row footer-bottom">
+        <div class="col-md-6 text-start mb-3 mb-md-0">
+          <span>&copy; 2026 RALLYX Performance Club. All rights reserved.</span>
+        </div>
+        <div class="col-md-6 text-md-end text-start">
+          <a href="coming-soon.html" class="me-3">Privacy Policy</a>
+          <a href="coming-soon.html">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" title="Go to top" aria-label="Scroll back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/></svg>
+  </button>
+
+  <!-- Bootstrap 5 Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- JS to switch tabs based on URL parameters -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const programType = urlParams.get('program') || urlParams.get('type') || urlParams.get('level');
+      
+      if (programType) {
+        let tabEl;
+        if (programType === 'beginner' || programType === 'intermediate' || programType === 'advanced' || programType === 'kids' || programType === 'coaching' || programType === 'pro') {
+          tabEl = document.querySelector('#personal-coaching-tab');
+        } else if (programType === 'tournament') {
+          tabEl = document.querySelector('#tournament-reg-tab');
+        } else if (programType === 'court') {
+          tabEl = document.querySelector('#court-membership-tab');
+        }
+        
+        if (tabEl) {
+          const tab = bootstrap.Tab.getOrCreateInstance(tabEl);
+          if (tab) tab.show();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

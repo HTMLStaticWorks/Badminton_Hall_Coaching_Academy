@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RALLYX Performance Club - Elite coaching registration portals, live member points, and court schedulers launching soon.">
+  <title>RALLYX — Launching Soon</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230052FF'><path d='M11 16h2V3a1 1 0 0 0-2 0v13z'/><path d='M8.5 16l1.5-11.5a1 1 0 0 0-1.9-.4l-1.8 11.2a.5.5 0 0 0 .5.7h1.7z'/><path d='M15.5 16l-1.5-11.5a1 1 0 0 1 1.9-.4l1.8 11.2a.5.5 0 0 1-.5.7h-1.7z'/><path d='M9 17.5a3 3 0 0 0 6 0H9z'/><path d='M8 12.5h8v1H8z'/></svg>">
+
+  <!-- Google Fonts - Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+
+  <style>
+    body {
+      background: radial-gradient(circle at 10% 10%, rgba(0, 82, 255, 0.15), var(--primary) 65%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    
+    .teaser-card {
+      max-width: 620px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    body.dark-mode .teaser-card {
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .countdown-number {
+      font-size: 2.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+    }
+    
+    .countdown-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Teaser Card
+       ========================================================================== */ -->
+  <div class="teaser-card text-center text-white reveal active">
+    <!-- Brand Logo -->
+    <a class="footer-logo justify-content-center mb-4" href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5zm.36-4.57c-.16.48-.61.85-1.12.87-.65.03-1.19-.48-1.22-1.13-.01-.33.09-.64.28-.88l2.67-3.35c.34-.43.86-.69 1.41-.69H16c1.1 0 2 .9 2 2v2.74c0 .54-.25 1.05-.67 1.39l-4.97 4.09z"/>
+      </svg>
+      <span style="letter-spacing:0.05em;">RALLYX</span>
+    </a>
+
+    <h1 class="h3 text-white mb-2" style="font-weight: 500;">Next Generation Platform</h1>
+    <p class="text-white-50 small mb-4">We are configuring elite match reserves, training metrics progression, and player ladders. Launching in:</p>
+
+    <!-- Countdown Timer Grid -->
+    <div class="row g-2 mb-5 justify-content-center">
+      <div class="col-3 col-sm-2">
+        <div class="p-3 rounded-3 bg-white bg-opacity-10 border border-white-10">
+          <div class="countdown-number" id="days">24</div>
+          <div class="countdown-label">Days</div>
+        </div>
+      </div>
+      <div class="col-3 col-sm-2">
+        <div class="p-3 rounded-3 bg-white bg-opacity-10 border border-white-10">
+          <div class="countdown-number" id="hours">11</div>
+          <div class="countdown-label">Hrs</div>
+        </div>
+      </div>
+      <div class="col-3 col-sm-2">
+        <div class="p-3 rounded-3 bg-white bg-opacity-10 border border-white-10">
+          <div class="countdown-number" id="minutes">42</div>
+          <div class="countdown-label">Min</div>
+        </div>
+      </div>
+      <div class="col-3 col-sm-2">
+        <div class="p-3 rounded-3 bg-white bg-opacity-10 border border-white-10">
+          <div class="countdown-number" id="seconds">58</div>
+          <div class="countdown-label">Sec</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter Form -->
+    <div class="p-4 rounded-4 bg-white bg-opacity-5 border border-white-10 text-start">
+      <h3 class="h6 text-white mb-2" style="font-weight: 500;">✉️ Register for Early Access Codes</h3>
+      <p class="text-white-50 small mb-4">Subscribe to receive early invitations and locker codes.</p>
+      
+      <form id="teaserForm">
+        <div class="input-group">
+          <input type="email" class="form-control bg-transparent border-white-50 text-white rounded-start-pill py-2 px-3" placeholder="email@address.com" required>
+          <button class="btn btn-premium-secondary rounded-end-pill py-2 px-4" type="submit">Notify Me</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="mt-4">
+      <a href="index.html" class="small text-white-50">Back to Landing Court</a>
+    </div>
+  </div>
+
+  <!-- Core Javascript -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Launch countdown timer parameters (Target date 24 days out)
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 24);
+    
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+      
+      if (diff <= 0) {
+        clearInterval(timerInterval);
+        return;
+      }
+      
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = d.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = h.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = m.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = s.toString().padStart(2, '0');
+    }
+    
+    const timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Form validation
+    document.getElementById('teaserForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const submitBtn = e.target.querySelector('button');
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="width:12px; height:12px;"></span>';
+      
+      setTimeout(() => {
+        input.value = '';
+        input.placeholder = 'Invitations sent!';
+        submitBtn.innerHTML = '✓';
+        submitBtn.style.backgroundColor = '#149650';
+        submitBtn.style.color = '#FFFFFF';
+      }, 1200);
+    });
+  </script>
+</body>
+</html>

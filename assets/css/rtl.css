@@ -1,0 +1,188 @@
+/* ==========================================================================
+   RALLYX - RTL Support Stylesheet
+   ========================================================================== */
+
+/* Overrides when dir="rtl" is set on html or rtl-mode class on body */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-sans);
+}
+
+/* Float Stats Offset adjustments for RTL */
+[dir="rtl"] .floating-stats-card.card-1 {
+  right: auto;
+  left: 5%;
+}
+
+[dir="rtl"] .floating-stats-card.card-2 {
+  left: auto;
+  right: 5%;
+}
+
+[dir="rtl"] .floating-stats-card.card-3 {
+  right: auto;
+  left: 15%;
+}
+
+/* Navbars / Footers Alignments */
+[dir="rtl"] .ms-auto {
+  margin-right: auto !important;
+  margin-left: unset !important;
+}
+
+[dir="rtl"] .me-auto {
+  margin-left: auto !important;
+  margin-right: unset !important;
+}
+
+[dir="rtl"] .navbar-brand-logo {
+  flex-direction: row-reverse;
+}
+
+/* Buttons arrow flips */
+[dir="rtl"] .btn-premium-primary svg,
+[dir="rtl"] .btn-premium-secondary svg,
+[dir="rtl"] .btn-premium-outline svg {
+  transform: scaleX(-1);
+}
+
+/* Footer elements */
+[dir="rtl"] .footer-links a:hover {
+  padding-left: 0;
+  padding-right: 5px;
+}
+
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: 30px;
+}
+
+/* Custom list alignment */
+[dir="rtl"] ul {
+  padding-right: 2rem;
+  padding-left: 0;
+}
+
+[dir="rtl"] ol {
+  padding-right: 2rem;
+  padding-left: 0;
+}
+
+/* Service / Product details checklist indicators */
+[dir="rtl"] .checklist-item svg {
+  margin-right: 0;
+  margin-left: 0.75rem;
+}
+
+/* Floating offcanvas alignments */
+[dir="rtl"] .offcanvas-start {
+  right: 0;
+  left: auto;
+  transform: translateX(100%);
+}
+
+[dir="rtl"] .offcanvas-start.show {
+  transform: translateX(0);
+}
+
+/* Newsletter form: fix button/input alignment in RTL */
+[dir="rtl"] .newsletter-form .input-group {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .newsletter-form .form-control {
+  border-radius: 0 50px 50px 0;
+  border-left: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[dir="rtl"] .newsletter-btn {
+  border-radius: 50px 0 0 50px;
+}
+
+/* Footer bottom: fix alignment in RTL so copyright stays readable */
+[dir="rtl"] .footer-bottom .col-md-6:first-child {
+  text-align: right !important;
+}
+
+[dir="rtl"] .footer-bottom .col-md-6:last-child {
+  text-align: left !important;
+}
+
+[dir="rtl"] .footer-bottom span {
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: embed;
+}
+
+/* Fix Bootstrap 5 input-group physical properties in RTL mode */
+[dir="rtl"] .input-group > :not(:first-child) {
+  margin-left: 0 !important;
+  margin-right: -1px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: var(--bs-border-radius, 0.375rem) !important;
+  border-bottom-left-radius: var(--bs-border-radius, 0.375rem) !important;
+}
+
+[dir="rtl"] .input-group > :not(:last-child) {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: var(--bs-border-radius, 0.375rem) !important;
+  border-bottom-right-radius: var(--bs-border-radius, 0.375rem) !important;
+}
+
+/* ==========================================================================
+   Hero Section (Home 1) - RTL Button Alignment
+   ========================================================================== */
+
+/* On desktop, align button group to the right (logical start in RTL) */
+[dir="rtl"] .hero-classic .justify-content-lg-start {
+  justify-content: flex-end !important;
+}
+
+/* On mobile (d-grid), buttons are full-width — keep them stretched */
+@media (max-width: 575.98px) {
+  [dir="rtl"] .hero-classic .justify-content-lg-start {
+    justify-content: stretch !important;
+  }
+}
+
+/* Hero description paragraph: reset ltr-only left-margin override */
+[dir="rtl"] .hero-classic .desc.ms-lg-0 {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+/* ==========================================================================
+   Home 2 Visual Arena Section - RTL Button Alignment
+   ========================================================================== */
+
+/* In RTL, text-md-end flips to the left, and text-start on mobile also
+   sits on the wrong side — override both so the button always aligns to
+   the logical end (right-to-left visual right = physical left). */
+[dir="rtl"] .home-2-gallery-header .text-md-end,
+[dir="rtl"] .home-2-gallery-header .text-start {
+  text-align: end !important;
+}
+
+/* ==========================================================================
+   Bootstrap Modal - RTL Fix (Secure Checkout & all modals)
+   ========================================================================== */
+
+/* Reverse the modal-header flex direction so the × close button sits on
+   the left (logical start in RTL) and the title sits on the right */
+[dir="rtl"] .modal-header {
+  flex-direction: row-reverse;
+}
+
+/* Reset the close button margin so it doesn't add unwanted space */
+[dir="rtl"] .modal-header .btn-close {
+  margin: 0;
+  margin-left: auto;
+  margin-right: 0;
+}
