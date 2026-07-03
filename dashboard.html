@@ -153,6 +153,39 @@
       }
     }
 
+    @media (max-width: 400px) {
+      .dashboard-header {
+        padding: 0.5rem 0.75rem !important;
+        gap: 0.25rem !important;
+      }
+      .dashboard-header .utility-btn {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.65rem !important;
+      }
+      .dashboard-header .utility-btn svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+      .dashboard-profile-panel {
+        padding: 0.2rem !important;
+        gap: 0 !important;
+        border: none !important;
+        background: transparent !important;
+      }
+      .dashboard-profile-avatar {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 0.75rem !important;
+      }
+      .dashboard-profile-caret {
+        display: none !important;
+      }
+      #dashboardSectionTitle {
+        font-size: 0.95rem !important;
+      }
+    }
+
     /* Tournament & Court Booking sections: prevent cell text wrapping on all screen sizes */
     #tournaments .table th,
     #tournaments .table td,
@@ -293,8 +326,8 @@
         
         <!-- Quick Global Settings & User Profile -->
         <div class="d-flex align-items-center gap-3">
-          <button class="utility-btn font-monospace d-none d-sm-flex" id="rtl-toggle" title="Toggle RTL direction">RTL</button>
-          <button class="utility-btn d-none d-sm-flex" id="theme-toggle" title="Toggle dark mode">
+          <button class="utility-btn font-monospace" id="rtl-toggle" title="Toggle RTL direction">RTL</button>
+          <button class="utility-btn" id="theme-toggle" title="Toggle dark mode">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.277 7.277a7.21 7.21 0 0 0 3.46-.878.767.767 0 0 1 .858.08.77 0 0 1 .08.858 7.211 7.211 0 0 1-7.602 4.168 7.272 7.272 0 0 1-5.677-5.677 7.27 7.27 0 0 1 4.169-7.601z"/></svg>
           </button>
 
