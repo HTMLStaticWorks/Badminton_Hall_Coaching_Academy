@@ -1433,3 +1433,19 @@ body.home-2-page:not(.dark-mode) .home-2-gallery-header .text-white {
     font-size: 8px !important;
   }
 }
+
+/* 
+   Always-Dark Elements (regardless of theme)
+   Ensure sections/cards that maintain a dark green background in light mode
+   use the high-contrast dark theme accent and muted text colors.
+*/
+section.bg-primary,
+.glass-card.bg-primary,
+.hero-luxury {
+  --accent: #FF781A;
+  --accent-rgb: 255, 120, 26;
+  --text-muted: #8DD3B9;
+  --electric-blue: #38BDF8;
+  --electric-blue-rgb: 56, 189, 248;
+}
+
